@@ -3,30 +3,30 @@ require 'twitter'
 require 'yaml'
 require 'date'
 
-def connect_twitter_stream
-  keys = YAML.load_file('./twitter_config.yml')
+def connect_twitter
+  keys = YAML.load_file('./twitter-config.yml')
   @client = Twitter::Streaming::Client.new do |config|
     config.consumer_key = keys['twitter']['consumer_key']
     config.consumer_secret = keys['twitter']['consumer_secret']
     config.access_token = keys['twitter']['access_token']
     config.access_token_secret = keys['twitter']['access_token_secret']
   end
-  @user_screen_name = keys['twitter']['screen_name']
-end
 
-def connect_twitter_rest
-  keys = YAML.load_file('./twitter_config.yml')
   @rest_client = Twitter::REST::Client.new do |config|
     config.consumer_key = keys['twitter']['consumer_key']
     config.consumer_secret = keys['twitter']['consumer_secret']
     config.access_token = keys['twitter']['access_token']
     config.access_token_secret = keys['twitter']['access_token_secret']
   end
+
+  @user_screen_name = @rest_client.user.name
 end
 
 def stream
   @client.user do |status|
     if status.is_a?(Twitter::Tweet)
+      # puts "#{status.user.name} (#{status.user.screen_name})"
+      # puts status.text
       puts '---'
       if status.in_reply_to_screen_name == @user_screen_name
         if status.user.screen_name == @user_screen_name
@@ -40,6 +40,9 @@ def stream
 end
 
 def add_reminder(arr)
+  # 正規表現でがんばります
+  @regexp_rd = /^@#{user_screen_name}\s+(.+)$/
+
   # 文字列操作により解析しリマインダを設定する。解析出来ない形式の場合は例外処理で修了される
   begin
     case arr[1] # [rd:, kc:, $]のいずれか
@@ -78,9 +81,10 @@ def add_reminder(arr)
       # Thread.join(@thread)
       @thread.run
       puts 'Reminder Added'
-      text = "@#{@user_screen_name} リマインダーを設定しました: #{notice_text} - #{@notice_date}"
+      text = "リマインダーを設定しました: #{notice_text} - #{@notice_date}"
       puts text
-      @rest_client.update(text)
+      @rest_client.update("@#{@user_screen_name} #{text}")
+      @rest_client.update("D #{@user_screen_name} #{text}")
 
     when 'kc:' then # KanColle
       # # #
@@ -191,6 +195,10 @@ def observer
   end
 end
 
+def update_name
+
+end
+
 def test # Commandline Test
   loop do
     status = gets.chomp
@@ -199,10 +207,10 @@ def test # Commandline Test
   end
 end
 
-connect_twitter_stream
-connect_twitter_rest
+connect_twitter
+
 @reminder_stacks = Array.new
 observer
 stream
 # test
-@thread.join
+# @thread.join
