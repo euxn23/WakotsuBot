@@ -1,0 +1,345 @@
+# Logfile created on 2014-07-10 15:50:50 +0900 by logger.rb/36483
+D, [2014-07-10T15:50:50.698789 #27824] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-07-10T15:50:50.700088 #27824] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-07-10T15:50:50.701333 #27824] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-10T15:50:50.701538 #27824]  INFO -- : Migrating to CreateUsers (20147101550)
+D, [2014-07-10T15:50:50.703922 #27824] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-10T15:50:50.705528 #27824] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "string" varchar(255), "integer" integer) [0m
+D, [2014-07-10T15:50:50.714023 #27824] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147101550"]]
+D, [2014-07-10T15:50:50.715064 #27824] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-10T15:51:31.892423 #27867] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-10T15:51:31.894435 #27867]  INFO -- : Migrating to AddUidToUsers (20147101551)
+D, [2014-07-10T15:51:31.896436 #27867] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-10T15:51:31.904344 #27867] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mALTER TABLE "users" ADD "iud" integer[0m
+D, [2014-07-10T15:51:31.908243 #27867] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147101551"]]
+D, [2014-07-10T15:51:31.909388 #27867] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+D, [2014-07-10T16:07:30.008174 #29536] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2014-07-11T16:32:23.249238 #37256] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-07-11T16:32:23.251299 #37256] DEBUG -- :   [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-07-11T16:32:23.252338 #37256] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-11T16:32:23.252461 #37256]  INFO -- : Migrating to CreateUnsavedTweet (20147111548)
+D, [2014-07-11T16:32:23.254275 #37256] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-11T16:32:23.255576 #37256] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "unsaved_tweet" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "string" varchar(255)) [0m
+D, [2014-07-11T16:32:23.262631 #37256] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147111548"]]
+D, [2014-07-11T16:32:23.263898 #37256] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+D, [2014-07-11T16:57:29.103592 #39005] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-07-11T16:57:29.105148 #39005] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-07-11T16:57:29.106313 #39005] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-11T16:57:29.106467 #39005]  INFO -- : Migrating to CreateUnsavedTweets (20147111657)
+D, [2014-07-11T16:57:29.109090 #39005] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-11T16:57:29.110765 #39005] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "unsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "string" varchar(255)) [0m
+D, [2014-07-11T16:57:29.133078 #39005] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147111657"]]
+D, [2014-07-11T16:57:29.134272 #39005] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+D, [2014-07-11T17:22:47.106749 #40295] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-07-11T17:22:47.108720 #40295] DEBUG -- :   [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-07-11T17:22:47.109710 #40295] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-11T17:22:47.109844 #40295]  INFO -- : Migrating to CreateUnsavedTweets (20147111722)
+D, [2014-07-11T17:22:47.111820 #40295] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-11T17:22:47.113609 #40295] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "unsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255)) [0m
+D, [2014-07-11T17:22:47.119306 #40295] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147111722"]]
+D, [2014-07-11T17:22:47.120308 #40295] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+D, [2014-07-12T13:12:32.965725 #50535] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-12T13:12:32.969587 #50535]  INFO -- : Migrating to AddAddAndCheckToUnsavedTweets (20147121312)
+D, [2014-07-12T13:12:32.972269 #50535] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-12T13:12:32.979194 #50535] DEBUG -- :   [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20147121312"]]
+D, [2014-07-12T13:12:32.980249 #50535] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+D, [2014-07-12T13:19:45.767747 #51371] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+D, [2014-07-12T13:19:45.769024 #51371] DEBUG -- :   [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2014-07-12T13:19:45.769727 #51371] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-12T13:19:45.769824 #51371]  INFO -- : Migrating to CreateUnsavedTweets (20147111722)
+D, [2014-07-12T13:19:45.771341 #51371] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-12T13:19:45.772682 #51371] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mCREATE TABLE "unsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255)) [0m
+D, [2014-07-12T13:19:45.777085 #51371] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147111722"]]
+D, [2014-07-12T13:19:45.778862 #51371] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+I, [2014-07-12T13:19:45.778950 #51371]  INFO -- : Migrating to AddAddAndCheckToUnsavedTweets (20147121317)
+D, [2014-07-12T13:19:45.780599 #51371] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-12T13:19:45.781289 #51371] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mALTER TABLE "unsaved_tweets" ADD "add" boolean[0m
+D, [2014-07-12T13:19:45.781647 #51371] DEBUG -- :   [1m[35m (0.1ms)[0m  ALTER TABLE "unsaved_tweets" ADD "check" boolean
+D, [2014-07-12T13:19:45.782598 #51371] DEBUG -- :   [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20147121317"]]
+D, [2014-07-12T13:19:45.783502 #51371] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+D, [2014-07-12T13:28:55.635040 #51550] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-12T13:28:55.637081 #51550]  INFO -- : Migrating to CreateSavedTweets (20147121320)
+D, [2014-07-12T13:28:55.638704 #51550] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-12T13:28:55.645313 #51550] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "saved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255)) [0m
+D, [2014-07-12T13:28:55.648567 #51550] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147121320"]]
+D, [2014-07-12T13:28:55.650481 #51550] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:34:26.698619 #1024] DEBUG -- :   [1m[36mUnsavedTweets Load (0.5ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets" WHERE "unsaved_tweets"."check" = 'f'[0m
+D, [2014-07-14T16:35:07.031475 #1049] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:07.039073 #1049] DEBUG -- :   [1m[35mSQL (2.0ms)[0m  INSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)  [["add", false], ["check", false], ["text", "hoge_0"]]
+D, [2014-07-14T16:35:07.040142 #1049] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:07.040556 #1049] DEBUG -- :   [1m[35m (0.0ms)[0m  begin transaction
+D, [2014-07-14T16:35:07.041325 #1049] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)[0m  [["add", false], ["check", false], ["text", "hoge_1"]]
+D, [2014-07-14T16:35:07.042117 #1049] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+D, [2014-07-14T16:35:07.042346 #1049] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:07.042793 #1049] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  INSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)  [["add", false], ["check", false], ["text", "hoge_2"]]
+D, [2014-07-14T16:35:07.043625 #1049] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:07.043868 #1049] DEBUG -- :   [1m[35m (0.0ms)[0m  begin transaction
+D, [2014-07-14T16:35:07.044374 #1049] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)[0m  [["add", false], ["check", false], ["text", "hoge_3"]]
+D, [2014-07-14T16:35:07.045248 #1049] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+D, [2014-07-14T16:35:07.045605 #1049] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:07.046263 #1049] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)  [["add", false], ["check", false], ["text", "hoge_4"]]
+D, [2014-07-14T16:35:07.047081 #1049] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:07.047400 #1049] DEBUG -- :   [1m[35m (0.0ms)[0m  begin transaction
+D, [2014-07-14T16:35:07.047945 #1049] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)[0m  [["add", false], ["check", false], ["text", "hoge_5"]]
+D, [2014-07-14T16:35:07.048884 #1049] DEBUG -- :   [1m[35m (0.8ms)[0m  commit transaction
+D, [2014-07-14T16:35:07.049319 #1049] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:07.049947 #1049] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)  [["add", false], ["check", false], ["text", "hoge_6"]]
+D, [2014-07-14T16:35:07.050779 #1049] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:07.051176 #1049] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:07.051968 #1049] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)[0m  [["add", false], ["check", false], ["text", "hoge_7"]]
+D, [2014-07-14T16:35:07.052797 #1049] DEBUG -- :   [1m[35m (0.6ms)[0m  commit transaction
+D, [2014-07-14T16:35:07.053175 #1049] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:07.053998 #1049] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)  [["add", false], ["check", false], ["text", "hoge_8"]]
+D, [2014-07-14T16:35:07.054890 #1049] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:07.055211 #1049] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:07.055834 #1049] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "unsaved_tweets" ("add", "check", "text") VALUES (?, ?, ?)[0m  [["add", false], ["check", false], ["text", "hoge_9"]]
+D, [2014-07-14T16:35:07.056688 #1049] DEBUG -- :   [1m[35m (0.7ms)[0m  commit transaction
+D, [2014-07-14T16:35:09.608198 #1071] DEBUG -- :   [1m[36mUnsavedTweets Load (0.2ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets" WHERE "unsaved_tweets"."check" = 'f'[0m
+D, [2014-07-14T16:35:12.208317 #1071] DEBUG -- :   [1m[35m (0.2ms)[0m  begin transaction
+D, [2014-07-14T16:35:12.213598 #1071] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mUPDATE "unsaved_tweets" SET "add" = ?, "check" = ? WHERE "unsaved_tweets"."id" = 11[0m  [["add", true], ["check", true]]
+D, [2014-07-14T16:35:12.215428 #1071] DEBUG -- :   [1m[35m (1.5ms)[0m  commit transaction
+D, [2014-07-14T16:35:12.219080 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:12.221050 #1071] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "saved_tweets" ("text") VALUES (?)  [["text", "hoge_0"]]
+D, [2014-07-14T16:35:12.222006 #1071] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:13.227347 #1071] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:13.228656 #1071] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mUPDATE "unsaved_tweets" SET "add" = ?, "check" = ? WHERE "unsaved_tweets"."id" = 12[0m  [["add", true], ["check", true]]
+D, [2014-07-14T16:35:13.230483 #1071] DEBUG -- :   [1m[35m (1.6ms)[0m  commit transaction
+D, [2014-07-14T16:35:13.231137 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:13.231948 #1071] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "saved_tweets" ("text") VALUES (?)  [["text", "hoge_1"]]
+D, [2014-07-14T16:35:13.232880 #1071] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:17.127987 #1071] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:17.129080 #1071] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mUPDATE "unsaved_tweets" SET "add" = ?, "check" = ? WHERE "unsaved_tweets"."id" = 13[0m  [["add", true], ["check", true]]
+D, [2014-07-14T16:35:17.130875 #1071] DEBUG -- :   [1m[35m (1.6ms)[0m  commit transaction
+D, [2014-07-14T16:35:17.131476 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:17.132257 #1071] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "saved_tweets" ("text") VALUES (?)  [["text", "hoge_2"]]
+D, [2014-07-14T16:35:17.133157 #1071] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:17.693314 #1071] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:17.694408 #1071] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mUPDATE "unsaved_tweets" SET "add" = ?, "check" = ? WHERE "unsaved_tweets"."id" = 14[0m  [["add", true], ["check", true]]
+D, [2014-07-14T16:35:17.696129 #1071] DEBUG -- :   [1m[35m (1.5ms)[0m  commit transaction
+D, [2014-07-14T16:35:17.696755 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:17.697528 #1071] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "saved_tweets" ("text") VALUES (?)  [["text", "hoge_3"]]
+D, [2014-07-14T16:35:17.698464 #1071] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:18.238066 #1071] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:18.239545 #1071] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mUPDATE "unsaved_tweets" SET "add" = ?, "check" = ? WHERE "unsaved_tweets"."id" = 15[0m  [["add", true], ["check", true]]
+D, [2014-07-14T16:35:18.241414 #1071] DEBUG -- :   [1m[35m (1.6ms)[0m  commit transaction
+D, [2014-07-14T16:35:18.242038 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:18.243070 #1071] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "saved_tweets" ("text") VALUES (?)  [["text", "hoge_4"]]
+D, [2014-07-14T16:35:18.244113 #1071] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:19.057921 #1071] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:19.059016 #1071] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mUPDATE "unsaved_tweets" SET "add" = ?, "check" = ? WHERE "unsaved_tweets"."id" = 16[0m  [["add", true], ["check", true]]
+D, [2014-07-14T16:35:19.060786 #1071] DEBUG -- :   [1m[35m (1.5ms)[0m  commit transaction
+D, [2014-07-14T16:35:19.061403 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:19.062422 #1071] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "saved_tweets" ("text") VALUES (?)  [["text", "hoge_5"]]
+D, [2014-07-14T16:35:19.063424 #1071] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:19.755626 #1071] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T16:35:19.756803 #1071] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mUPDATE "unsaved_tweets" SET "check" = ? WHERE "unsaved_tweets"."id" = 17[0m  [["check", true]]
+D, [2014-07-14T16:35:19.758525 #1071] DEBUG -- :   [1m[35m (1.5ms)[0m  commit transaction
+D, [2014-07-14T16:35:20.283931 #1071] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-14T16:35:20.284900 #1071] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  UPDATE "unsaved_tweets" SET "check" = ? WHERE "unsaved_tweets"."id" = 18  [["check", true]]
+D, [2014-07-14T16:35:20.286678 #1071] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+D, [2014-07-14T16:35:25.156199 #1092] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets" WHERE "unsaved_tweets"."check" = 'f'[0m
+D, [2014-07-14T16:35:35.626464 #1114] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets" WHERE "unsaved_tweets"."check" = 'f'[0m
+D, [2014-07-14T16:42:31.518689 #2946] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-14T16:42:41.828393 #3008] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-14T17:56:48.895490 #5568] DEBUG -- :   [1m[36mSavedTweets Load (0.4ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE (name LIKE '%0%')[0m
+E, [2014-07-14T17:56:48.895592 #5568] ERROR -- : SQLite3::SQLException: no such column: name: SELECT "saved_tweets".* FROM "saved_tweets"  WHERE (name LIKE '%0%')
+D, [2014-07-14T17:57:11.362383 #5631] DEBUG -- :   [1m[36mSavedTweets Load (0.9ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE (text LIKE '%0%')[0m
+D, [2014-07-14T17:57:15.250296 #5653] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE (text LIKE '%hoge%')[0m
+D, [2014-07-14T17:57:42.493338 #5715] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE (text LIKE '0')[0m
+D, [2014-07-14T17:58:12.804557 #5937] DEBUG -- :   [1m[36mSavedTweets Load (1.0ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE (text LIKE '%hoge%')[0m
+D, [2014-07-14T17:58:18.780969 #5959] DEBUG -- :   [1m[36mSavedTweets Load (1.0ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE (text LIKE '%_%')[0m
+D, [2014-07-14T18:02:45.197247 #6030] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-14T18:32:00.386265 #6987] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-14T18:32:00.388727 #6987]  INFO -- : Migrating to AddAbleToSavedTweets (20147141831)
+D, [2014-07-14T18:32:00.390385 #6987] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-14T18:32:00.397469 #6987] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mALTER TABLE "saved_tweets" ADD "able" boolean[0m
+D, [2014-07-14T18:32:00.418565 #6987] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20147141831"]]
+D, [2014-07-14T18:32:00.419557 #6987] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+D, [2014-07-15T00:08:25.856351 #10254] DEBUG -- :   [1m[36mSavedTweets Load (2.2ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:08:38.520428 #10316] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:08:51.028112 #10419] DEBUG -- :   [1m[36mSavedTweets Load (1.0ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:08:57.988746 #10481] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:09:17.805314 #10683] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:11:13.776212 #10928] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets" WHERE "saved_tweets"."able" IS NULL[0m
+D, [2014-07-15T00:11:26.113391 #11028] DEBUG -- :   [1m[36mSQL (1.0ms)[0m  [1mUPDATE "saved_tweets" SET "able" = 't' WHERE "saved_tweets"."able" IS NULL[0m
+D, [2014-07-15T00:11:30.542490 #11051] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:36:18.488657 #13550] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-15T00:36:18.491745 #13550]  INFO -- : Migrating to ChangeUnsavedTweets (2014715034)
+D, [2014-07-15T00:36:18.493331 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-15T00:36:18.502435 #13550] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mCREATE TEMPORARY TABLE "aunsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "add" boolean, "check" boolean) [0m
+D, [2014-07-15T00:36:18.503457 #13550] DEBUG -- :   [1m[35m (0.4ms)[0m  SELECT * FROM "unsaved_tweets"
+D, [2014-07-15T00:36:18.507351 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (1, 'hoge_0', 't', 't')[0m
+D, [2014-07-15T00:36:18.507614 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (2, 'hoge_1', 't', 't')
+D, [2014-07-15T00:36:18.507793 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (3, 'hoge_2', 't', 't')[0m
+D, [2014-07-15T00:36:18.507959 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (4, 'hoge_3', 't', 't')
+D, [2014-07-15T00:36:18.508117 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (5, 'hoge_4', 't', 't')[0m
+D, [2014-07-15T00:36:18.508274 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (6, 'hoge_5', 't', 't')
+D, [2014-07-15T00:36:18.508448 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (7, 'hoge_6', 't', 't')[0m
+D, [2014-07-15T00:36:18.508604 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (8, 'hoge_7', 't', 't')
+D, [2014-07-15T00:36:18.508755 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (9, 'hoge_8', 'f', 't')[0m
+D, [2014-07-15T00:36:18.508910 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (10, 'hoge_9', 't', 't')
+D, [2014-07-15T00:36:18.509059 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (11, 'hoge_0', 't', 't')[0m
+D, [2014-07-15T00:36:18.509281 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (12, 'hoge_1', 't', 't')
+D, [2014-07-15T00:36:18.509433 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (13, 'hoge_2', 't', 't')[0m
+D, [2014-07-15T00:36:18.509592 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (14, 'hoge_3', 't', 't')
+D, [2014-07-15T00:36:18.509740 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (15, 'hoge_4', 't', 't')[0m
+D, [2014-07-15T00:36:18.509907 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (16, 'hoge_5', 't', 't')
+D, [2014-07-15T00:36:18.510063 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (17, 'hoge_6', 'f', 't')[0m
+D, [2014-07-15T00:36:18.510232 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (18, 'hoge_7', 'f', 't')
+D, [2014-07-15T00:36:18.510356 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (19, 'hoge_8', 'f', 'f')[0m
+D, [2014-07-15T00:36:18.510482 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (20, 'hoge_9', 'f', 'f')
+D, [2014-07-15T00:36:18.511264 #13550] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mDROP TABLE "unsaved_tweets"[0m
+D, [2014-07-15T00:36:18.512042 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  CREATE TABLE "unsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "add" boolean DEFAULT 'f', "check" boolean) 
+D, [2014-07-15T00:36:18.512613 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aunsaved_tweets"[0m
+D, [2014-07-15T00:36:18.512774 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (1, 'hoge_0', 't', 't')
+D, [2014-07-15T00:36:18.512912 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (2, 'hoge_1', 't', 't')[0m
+D, [2014-07-15T00:36:18.513027 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (3, 'hoge_2', 't', 't')
+D, [2014-07-15T00:36:18.513142 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (4, 'hoge_3', 't', 't')[0m
+D, [2014-07-15T00:36:18.513320 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (5, 'hoge_4', 't', 't')
+D, [2014-07-15T00:36:18.513475 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (6, 'hoge_5', 't', 't')[0m
+D, [2014-07-15T00:36:18.513621 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (7, 'hoge_6', 't', 't')
+D, [2014-07-15T00:36:18.513756 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (8, 'hoge_7', 't', 't')[0m
+D, [2014-07-15T00:36:18.513864 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (9, 'hoge_8', 'f', 't')
+D, [2014-07-15T00:36:18.513976 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (10, 'hoge_9', 't', 't')[0m
+D, [2014-07-15T00:36:18.514082 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (11, 'hoge_0', 't', 't')
+D, [2014-07-15T00:36:18.514210 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (12, 'hoge_1', 't', 't')[0m
+D, [2014-07-15T00:36:18.514331 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (13, 'hoge_2', 't', 't')
+D, [2014-07-15T00:36:18.514443 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (14, 'hoge_3', 't', 't')[0m
+D, [2014-07-15T00:36:18.514550 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (15, 'hoge_4', 't', 't')
+D, [2014-07-15T00:36:18.514672 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (16, 'hoge_5', 't', 't')[0m
+D, [2014-07-15T00:36:18.514784 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (17, 'hoge_6', 'f', 't')
+D, [2014-07-15T00:36:18.514895 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (18, 'hoge_7', 'f', 't')[0m
+D, [2014-07-15T00:36:18.515001 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (19, 'hoge_8', 'f', 'f')
+D, [2014-07-15T00:36:18.515111 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (20, 'hoge_9', 'f', 'f')[0m
+D, [2014-07-15T00:36:18.515449 #13550] DEBUG -- :   [1m[35m (0.3ms)[0m  DROP TABLE "aunsaved_tweets"
+D, [2014-07-15T00:36:18.516283 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "aunsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "add" boolean DEFAULT 'f', "check" boolean) [0m
+D, [2014-07-15T00:36:18.516812 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "unsaved_tweets"
+D, [2014-07-15T00:36:18.516982 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (1, 'hoge_0', 't', 't')[0m
+D, [2014-07-15T00:36:18.517104 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (2, 'hoge_1', 't', 't')
+D, [2014-07-15T00:36:18.517218 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (3, 'hoge_2', 't', 't')[0m
+D, [2014-07-15T00:36:18.517331 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (4, 'hoge_3', 't', 't')
+D, [2014-07-15T00:36:18.517440 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (5, 'hoge_4', 't', 't')[0m
+D, [2014-07-15T00:36:18.517565 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (6, 'hoge_5', 't', 't')
+D, [2014-07-15T00:36:18.517673 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (7, 'hoge_6', 't', 't')[0m
+D, [2014-07-15T00:36:18.517782 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (8, 'hoge_7', 't', 't')
+D, [2014-07-15T00:36:18.517889 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (9, 'hoge_8', 'f', 't')[0m
+D, [2014-07-15T00:36:18.517998 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (10, 'hoge_9', 't', 't')
+D, [2014-07-15T00:36:18.518124 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (11, 'hoge_0', 't', 't')[0m
+D, [2014-07-15T00:36:18.518233 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (12, 'hoge_1', 't', 't')
+D, [2014-07-15T00:36:18.518339 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (13, 'hoge_2', 't', 't')[0m
+D, [2014-07-15T00:36:18.518448 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (14, 'hoge_3', 't', 't')
+D, [2014-07-15T00:36:18.518579 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (15, 'hoge_4', 't', 't')[0m
+D, [2014-07-15T00:36:18.518692 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (16, 'hoge_5', 't', 't')
+D, [2014-07-15T00:36:18.518798 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (17, 'hoge_6', 'f', 't')[0m
+D, [2014-07-15T00:36:18.518907 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (18, 'hoge_7', 'f', 't')
+D, [2014-07-15T00:36:18.519013 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (19, 'hoge_8', 'f', 'f')[0m
+D, [2014-07-15T00:36:18.519131 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "aunsaved_tweets" ("id","text","add","check") VALUES (20, 'hoge_9', 'f', 'f')
+D, [2014-07-15T00:36:18.519464 #13550] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mDROP TABLE "unsaved_tweets"[0m
+D, [2014-07-15T00:36:18.520007 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  CREATE TABLE "unsaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "add" boolean DEFAULT 'f', "check" boolean DEFAULT 'f') 
+D, [2014-07-15T00:36:18.520503 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aunsaved_tweets"[0m
+D, [2014-07-15T00:36:18.520670 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (1, 'hoge_0', 't', 't')
+D, [2014-07-15T00:36:18.520794 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (2, 'hoge_1', 't', 't')[0m
+D, [2014-07-15T00:36:18.520912 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (3, 'hoge_2', 't', 't')
+D, [2014-07-15T00:36:18.521028 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (4, 'hoge_3', 't', 't')[0m
+D, [2014-07-15T00:36:18.521148 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (5, 'hoge_4', 't', 't')
+D, [2014-07-15T00:36:18.521264 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (6, 'hoge_5', 't', 't')[0m
+D, [2014-07-15T00:36:18.521371 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (7, 'hoge_6', 't', 't')
+D, [2014-07-15T00:36:18.521482 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (8, 'hoge_7', 't', 't')[0m
+D, [2014-07-15T00:36:18.521588 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (9, 'hoge_8', 'f', 't')
+D, [2014-07-15T00:36:18.521713 #13550] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (10, 'hoge_9', 't', 't')[0m
+D, [2014-07-15T00:36:18.521820 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (11, 'hoge_0', 't', 't')
+D, [2014-07-15T00:36:18.521930 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (12, 'hoge_1', 't', 't')[0m
+D, [2014-07-15T00:36:18.522035 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (13, 'hoge_2', 't', 't')
+D, [2014-07-15T00:36:18.522145 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (14, 'hoge_3', 't', 't')[0m
+D, [2014-07-15T00:36:18.522268 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (15, 'hoge_4', 't', 't')
+D, [2014-07-15T00:36:18.522379 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (16, 'hoge_5', 't', 't')[0m
+D, [2014-07-15T00:36:18.522497 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (17, 'hoge_6', 'f', 't')
+D, [2014-07-15T00:36:18.522609 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (18, 'hoge_7', 'f', 't')[0m
+D, [2014-07-15T00:36:18.522715 #13550] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (19, 'hoge_8', 'f', 'f')
+D, [2014-07-15T00:36:18.522839 #13550] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "unsaved_tweets" ("id","text","add","check") VALUES (20, 'hoge_9', 'f', 'f')[0m
+D, [2014-07-15T00:36:18.522994 #13550] DEBUG -- :   [1m[35m (0.1ms)[0m  DROP TABLE "aunsaved_tweets"
+D, [2014-07-15T00:36:18.527744 #13550] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2014715034"]]
+D, [2014-07-15T00:36:18.529008 #13550] DEBUG -- :   [1m[35m (1.0ms)[0m  commit transaction
+D, [2014-07-15T00:37:09.863143 #13773] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+D, [2014-07-15T00:37:09.866145 #13773] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "unsaved_tweets" ("text") VALUES (?)  [["text", "はろおおおおお"]]
+D, [2014-07-15T00:37:09.867739 #13773] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+D, [2014-07-15T00:37:39.666706 #13877] DEBUG -- :   [1m[36mSavedTweets Load (0.7ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:41:21.289641 #14882] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:41:32.184334 #14965] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:41:36.742973 #15027] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:41:57.064871 #15233] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:42:57.623141 #15736] DEBUG -- :   [1m[36mUnsavedTweets Load (0.2ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets"[0m
+D, [2014-07-15T00:44:02.363727 #15878] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets"[0m
+D, [2014-07-15T00:44:13.272604 #15960] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets"[0m
+D, [2014-07-15T00:44:18.021096 #15983] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:44:39.273471 #16125] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T00:45:28.380097 #16288] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:00:05.937926 #18503] DEBUG -- :   [1m[36mSavedTweets Load (0.2ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:00:24.131678 #18624] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:05:43.226714 #19411] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:07:21.126172 #19515] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:07:54.109016 #19575] DEBUG -- :   [1m[36mSavedTweets Load (0.2ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:08:59.753214 #19815] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:09:10.677089 #19915] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:10:05.157135 #19981] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:10:13.829521 #20043] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:10:24.031649 #20105] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:10:30.544690 #20167] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:10:35.672143 #20227] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:20:16.497551 #20887] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:22:15.799248 #20911] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:27:47.104934 #21096] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:27:56.741561 #21159] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:28:01.053665 #21223] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:28:58.771955 #21367] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:29:21.989261 #21490] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:37:02.572664 #22847] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:37:31.132588 #22909] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:38:11.543183 #23192] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:38:22.876677 #23254] DEBUG -- :   [1m[36mSavedTweets Load (0.2ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:38:33.587845 #23356] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:38:40.753972 #23418] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:39:34.428626 #23860] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:40:38.002124 #23943] DEBUG -- :   [1m[36mSavedTweets Load (0.1ms)[0m  [1mSELECT "saved_tweets".* FROM "saved_tweets"[0m
+D, [2014-07-15T01:49:34.501775 #24052] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets"[0m
+D, [2014-07-15T01:54:25.989945 #24539] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets"[0m
+D, [2014-07-15T01:56:32.743345 #24884] DEBUG -- :   [1m[36mUnsavedTweets Load (0.1ms)[0m  [1mSELECT "unsaved_tweets".* FROM "unsaved_tweets"[0m
+D, [2014-07-15T02:23:56.796592 #25400] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2014-07-15T02:23:56.800113 #25400]  INFO -- : Migrating to ChangeSavedTweets (201471521)
+D, [2014-07-15T02:23:56.802268 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2014-07-15T02:23:56.811398 #25400] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mCREATE TEMPORARY TABLE "asaved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "able" boolean) [0m
+D, [2014-07-15T02:23:56.812066 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT * FROM "saved_tweets"
+D, [2014-07-15T02:23:56.816043 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (1, 'hoge_1', 't')[0m
+D, [2014-07-15T02:23:56.816319 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (2, 'hoge_2', 't')
+D, [2014-07-15T02:23:56.816499 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (3, 'hoge_3', 't')[0m
+D, [2014-07-15T02:23:56.816662 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (4, 'hoge_4', 't')
+D, [2014-07-15T02:23:56.816815 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (5, 'hoge_5', 't')[0m
+D, [2014-07-15T02:23:56.816970 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (6, 'hoge_6', 't')
+D, [2014-07-15T02:23:56.817165 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (7, 'hoge_7', 't')[0m
+D, [2014-07-15T02:23:56.817325 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (8, 'hoge_9', 't')
+D, [2014-07-15T02:23:56.817472 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (9, 'hoge_0', 't')[0m
+D, [2014-07-15T02:23:56.817623 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (10, 'hoge_1', 't')
+D, [2014-07-15T02:23:56.817770 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (11, 'hoge_2', 't')[0m
+D, [2014-07-15T02:23:56.817936 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (12, 'hoge_3', 't')
+D, [2014-07-15T02:23:56.818096 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "asaved_tweets" ("id","text","able") VALUES (13, 'hoge_4', 't')[0m
+D, [2014-07-15T02:23:56.818246 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "asaved_tweets" ("id","text","able") VALUES (14, 'hoge_5', 't')
+D, [2014-07-15T02:23:56.818710 #25400] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mDROP TABLE "saved_tweets"[0m
+D, [2014-07-15T02:23:56.819525 #25400] DEBUG -- :   [1m[35m (0.2ms)[0m  CREATE TABLE "saved_tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar(255), "able" boolean DEFAULT 't') 
+D, [2014-07-15T02:23:56.820131 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT * FROM "asaved_tweets"[0m
+D, [2014-07-15T02:23:56.820344 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (1, 'hoge_1', 't')
+D, [2014-07-15T02:23:56.820517 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (2, 'hoge_2', 't')[0m
+D, [2014-07-15T02:23:56.820662 #25400] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (3, 'hoge_3', 't')
+D, [2014-07-15T02:23:56.820786 #25400] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (4, 'hoge_4', 't')[0m
+D, [2014-07-15T02:23:56.820911 #25400] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (5, 'hoge_5', 't')
+D, [2014-07-15T02:23:56.821046 #25400] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (6, 'hoge_6', 't')[0m
+D, [2014-07-15T02:23:56.821175 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (7, 'hoge_7', 't')
+D, [2014-07-15T02:23:56.821295 #25400] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (8, 'hoge_9', 't')[0m
+D, [2014-07-15T02:23:56.821418 #25400] DEBUG -- :   [1m[35m (0.0ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (9, 'hoge_0', 't')
+D, [2014-07-15T02:23:56.821537 #25400] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (10, 'hoge_1', 't')[0m
+D, [2014-07-15T02:23:56.821683 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (11, 'hoge_2', 't')
+D, [2014-07-15T02:23:56.821903 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (12, 'hoge_3', 't')[0m
+D, [2014-07-15T02:23:56.822108 #25400] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "saved_tweets" ("id","text","able") VALUES (13, 'hoge_4', 't')
+D, [2014-07-15T02:23:56.822312 #25400] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mINSERT INTO "saved_tweets" ("id","text","able") VALUES (14, 'hoge_5', 't')[0m
+D, [2014-07-15T02:23:56.822760 #25400] DEBUG -- :   [1m[35m (0.4ms)[0m  DROP TABLE "asaved_tweets"
+D, [2014-07-15T02:23:56.828061 #25400] DEBUG -- :   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "201471521"]]
+D, [2014-07-15T02:23:56.829373 #25400] DEBUG -- :   [1m[35m (1.1ms)[0m  commit transaction

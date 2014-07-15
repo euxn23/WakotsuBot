@@ -1,0 +1,10 @@
+db:
+  product:
+    adapter: mysql2
+    host: localhost
+    username: YutaSuzuki
+    password: 5263
+    database: various_menhera
+  development:
+    adapter: sqlite3
+    database: database/dev.sqlite

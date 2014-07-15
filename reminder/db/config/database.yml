@@ -1,0 +1,7 @@
+db:
+  product:
+    adapter: sqlite3
+    database: database/product.sqlite
+  development:
+    adapter: sqlite3
+    database: database/dev.sqlite

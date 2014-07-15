@@ -1,0 +1,133 @@
+require 'active_record'
+require 'yaml'
+require 'logger'
+require 'erb'
+require 'date'
+
+Dir[File.expand_path('../models', __FILE__) << '/*.rb'].each do |file|
+  require file
+end
+
+namespace :db do
+  task :default => :migrate
+
+  desc "Migrate database"
+  task :migrate => :environment do
+    ActiveRecord::Migrator.migrate('db/migrate', ENV["VERSION"] ? ENV["VERSION"].to_i : nil )
+  end
+
+  task :environment do
+    dbconfig = YAML.load(File.read'db/config/database.yml')
+    ENV['ENV'] = 'development' unless ENV['ENV']
+    ActiveRecord::Base.establish_connection(dbconfig['db'][ENV['ENV']])
+    ActiveRecord::Base.logger = Logger.new('db/database.log')
+  end
+end
+
+namespace :unsaved do
+  task :ls => :list
+
+  task :list => :environment do
+    tw_arr = UnsavedTweets.all
+    list(tw_arr)
+  end
+
+  task :check => :environment do
+    unsaved_tweets = UnsavedTweets.where(check: false)
+    unsaved_tweets.each do |tw|
+      puts tw.text
+      puts 'save?'
+      command = STDIN.gets.chomp.to_s
+      case command
+      when /^y/
+        tw.update(add: true, check: true)
+        SavedTweets.create(text: tw.text)
+      when /^n/
+        tw.update(check: true)
+      when 'exit'
+        exit
+      else
+        # 処理をしない
+      end
+    end
+
+    # UnsavedTweets.where('id in ?', checked_id).update(check: true)
+  end
+
+  task :seeding => :environment do
+    10.times do |i|
+      UnsavedTweets.create(text: "hoge_#{i}", add: false, check: false)
+    end
+  end
+
+  task :add => :environment do
+    print 'Add: '
+    text = STDIN.gets.chomp.to_s
+    UnsavedTweets.create(text: text)
+  end
+
+
+  task :environment do
+    dbconfig = YAML.load(File.read'db/config/database.yml')
+    ENV['ENV'] = 'development' unless ENV['ENV']
+    ActiveRecord::Base.establish_connection(dbconfig['db'][ENV['ENV']])
+    ActiveRecord::Base.logger = Logger.new('db/database.log')
+  end
+end
+
+namespace :saved do
+  task :ls => :list
+
+  task :consist => :environment do
+    UnsavedTweets.where(add: nil).update_all(add: false)
+    UnsavedTweets.where(check: nil).update_all(check: false)
+    SavedTweets.where(able: nil).update_all(able: true)
+  end
+
+  task :list => :environment do
+    tw_arr = SavedTweets.all
+    list(tw_arr)
+  end
+
+  task :disable => :environmet do
+    tw_arr = SavedTweets.where(able: true)
+    list(tw_arr)
+    print 'Disable id: '
+    disable = STDIN.gets.to_i
+    SavedTweets.find(disable).update(able: false)
+  end
+
+  task :able => :environment do
+    tw_arr = SavedTweets.where(able: false)
+    list(tw_arr)
+    print 'Able id: '
+    able = STDIN.gets.to_i
+    SavedTweets.find(able).update(able: true)
+  end
+
+  task :search => :environment do
+    print 'Search: '
+    search = STDIN.gets.chomp.to_s
+    like = "%#{search}%"
+    tw_arr = SavedTweets.where('text LIKE ?', like)
+    list(tw_arr)
+  end
+
+
+  task :environment do
+    dbconfig = YAML.load(File.read'db/config/database.yml')
+    ENV['ENV'] = 'development' unless ENV['ENV']
+    ActiveRecord::Base.establish_connection(dbconfig['db'][ENV['ENV']])
+    ActiveRecord::Base.logger = Logger.new('db/database.log')
+  end
+
+end
+
+def list(arr)
+  columns = arr.column_names
+  puts columns.join("\t|")
+  puts columns.map{"---"}.join("\t|")
+  arr.each do |tw|
+    puts columns.map{|c| tw[c]}.join("\t|")
+  end
+end

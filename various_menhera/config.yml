@@ -1,0 +1,21 @@
+# config.yml
+wakotsu_bot:
+  twitter:
+    consumer_key: "ZyKe7OQHLIjEQ6gDKHAJGmsPy"
+    consumer_secret: "QXGqhXOaAIbL0B3kRmmDyxYbb2WH5SyEx8oU6RVMRB2ArzP1In"
+    access_token: "123857414-RrwxlmpycwhOVZ87MWixG2wt4XCAX6zRmNKlWEac"
+    access_token_secret: "3hXOgdbTKXtbsvJhe0AmpILpXN1LJfdXEA1gaEsx7Vfxq"
+
+various_menhera:
+  twitter:
+    consumer_key: "ZyKe7OQHLIjEQ6gDKHAJGmsPy"
+    consumer_secret: "QXGqhXOaAIbL0B3kRmmDyxYbb2WH5SyEx8oU6RVMRB2ArzP1In"
+    access_token: "123857414-RrwxlmpycwhOVZ87MWixG2wt4XCAX6zRmNKlWEac"
+    access_token_secret: "3hXOgdbTKXtbsvJhe0AmpILpXN1LJfdXEA1gaEsx7Vfxq"
+
+wktz:
+  twitter:
+    consumer_key: "L38cI3kXadxdWBTrufAdknRXU"
+    consumer_secret: "2wsVsBbYXnhYEEpxKat9w8CS3J9J0uWxV1jnwSEzbvLxP3rS3i"
+    access_token: "2567071267-J2UZRejs3kipqDd8WFoUIlKVqBRPpV5E7naj3Py"
+    access_token_secret: "3YLs2Wjs125A1aKMijenShaoSzGveCmXO5RpexUfQzZtM"

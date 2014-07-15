@@ -1,0 +1,9 @@
+class <%= @capitalized_name %> < ActiveRecord::Migration
+  def change
+    <% @change_tasks.each do |task| %><%
+      t = task.split(':')
+    %>add_column :<%= @target %>, :<%= t[0] %>, :<%= t[1] %><%
+      end
+    %>
+  end
+end
