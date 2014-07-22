@@ -2,6 +2,11 @@ require 'date'
 require 'erb'
 
 now = DateTime.now
+if ARGV.empty?
+  puts 'Empty ARGV Error.'
+  exit
+end
+
 file_name = "#{now.year}#{now.month}#{now.day}#{now.hour}#{now.minute}_#{ARGV[0]}"
 
 @capitalized_name = ARGV[0].split('_').map{|s| s.capitalize!}.join

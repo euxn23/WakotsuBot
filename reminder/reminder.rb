@@ -1,4 +1,4 @@
-# coding: utf-8
+#coding: utf-8
 require 'pry'
 require 'twitter'
 require 'yaml'
@@ -11,225 +11,193 @@ class TwitterReminder < TwitterConnect
     db = YAML.load_file('db/config/database.yml')
     ActiveRecord::Base.establish_connection(db["db"]["development"])
     super(identity, opt)
+    @reminder_stacks = Array.new
   end
 
   def stream
+    regexp_name = /^@#{@user_screen_name}\supdate_name\s(.+)$/
+    regexp_text = /^@#{@user_screen_name}\s(.+)$/
+    $update_name_available = true
+
     @client.user do |status|
       if status.is_a?(Twitter::Tweet)
-        # puts "#{status.user.name} (#{status.user.screen_name})"
-        # puts status.text
-        puts '---'
+
         if status.in_reply_to_screen_name == @user_screen_name
-          regexp_name = /^@#{@user_screen_name}\supdate_name\s(.+)$/
-          if status.text.match(regexp_name)
-            update_name($1, status.user)
+          # update_name
+          if $update_name_available
+            if status.text.match(regexp_name)
+              update_name($1, status.user)
+            end
           end
+
+          # reminder
           if status.user.screen_name == @user_screen_name
             # 自分自身から自分自身へのリプライの場合
-            semantic_process(status.text, status.user)
-            # arr = status.text.split(' ')
-            # add_reminder(arr)
-
+            text = status.text.match(regexp_text)[1]
+            semantic_process(text, status.user)
           end
         end
       end
-    end
-  end
 
-  def dm_stream
-    @client.user do |status|
       if status.is_a?(Twitter::DirectMessage)
-        # status_with_inreplyto = " @#{@user_screen_name} #{status.text}"
+        semantic_process(status.text)
       end
     end
   end
 
-
   def semantic_process(text, user = nil)
-    # 正規表現でがんばります
-    regexp_rd = /^@#{@user_screen_name}\srd:\s(.+)$/
-    regexp_kc = /^@#{@user_screen_name}\skc:\s(.+)$/
-    regexp_cmd = /^@#{@user_screen_name}\s\$\s(.+)$/
-    regexp_name = /^@#{@user_screen_name}\supdate_name\s(.+)$/
+    regexp_rd = /^rd:\s(.+)\s(.+)$/
+    regexp_kc = /^kc:\s(.+)\s(.+)$/
+    regexp_cmd = /^(\$|cmd:)\s(.+)\s(.+)$/
 
     case text
     when regexp_rd
-      set_reminder(tweet)
+      reminder_process($1, $2)
     when regexp_kc
       puts 'kc'
     when regexp_cmd
-      puts 'cmd'
-    when regexp_name
-      # update_name($1, user)
-    end
-    puts 'end'
-  end
-
-  def set_reminder(tweet)
-    regexp1 = /^@#{@user_screen_name}\s+rd:+\s+(.+)+:+(.+)$/
-    case tweet
-    when regexp1
-
-    end
-
-  end
-
-  def update_name(updated_name, user)
-    before_name = @rest_client.user.name
-    @rest_client.update_profile(name: updated_name)
-    notice = "#{user.name}(@#{user.screen_name})により改名されました: #{before_name} => #{updated_name}"
-    puts notice
-    @rest_client.update(notice)
-  end
-
-  def add_reminder(arr)
-    # 文字列操作により解析しリマインダを設定する。解析出来ない形式の場合は例外処理で修了される
-    begin
-      case arr[1] # [rd:, kc:, $]のいずれか
-      when 'rd:' then # Reminder
-        # # #
-        # Usable command types:
-        # * XX:xx
-        # * XXh
-        # * xxm
-        # * XXhxxm
-
-        # 絶対時間指定
-        if arr[2].include?(':') # XX:xx
-          time = arr[2].split(':') #[時, 分]
-          time[0] = time[0].to_i
-          time[1] = time[1].to_i
-          date = DateTime.now
-          if (time[0] > date.hour) || (time[0] == date.hour && time[1] > date.minute) #入力値が現在時刻より大きい場合(当日中の場合)
-            date += Rational(time[0]-date.hour, 24) + Rational(time[1]-date.minute, 24 * 60) - Rational(date.second ,24 * 60 * 60) #差分を加算し入力時刻とする
-          else #入力値が現在時刻より小さい場合(明日の場合)
-            date += Rational(time[0]-date.hour, 24) + Rational(time[1]-date.minute, 24 * 60) - Rational(date.second ,24 * 60 * 60) + 1 #差分+1日を加算し入力時刻とする
-          end
-          @notice_date = "#{date.hour}:#{date.minute}"
-        else
-          # 相対時間指定
-          date = relative_date(arr[2])
-        end
-
-        # @reminder_stacks(Array)にHash形式でリマインド内容(:text)とDateTime(:date)を追加し、:date順にsortする
-        notice_text = arr[3..-1].join(' ')
-        @reminder_stacks << Hash[:text => notice_text, :date => date]
-        @reminder_stacks.sort_by! do |elm|
-          elm[:date]
-        end
-        # Thread.wakeup(@thread)
-        # Thread.join(@thread)
-        @thread.run
-        puts 'Reminder Added'
-        text = "リマインダーを設定しました: #{notice_text} - #{@notice_date}"
-        puts text
-        @rest_client.update("@#{@user_screen_name} #{text}")
-        @rest_client.update("D #{@user_screen_name} #{text}")
-
-      when 'kc:' then # KanColle
-        # # #
-        # Usable Command Types:
-        # * ex (expedition: 遠征)
-        # * rp (repait: 修理)
-        # * bd (build: 建造)
-        # * cr (cure: 疲労回復)
-        # ex: @euta23 ex: 4h 遠征名
-
-        date = relative_date(arr[3])
-        notice_text = "@#{@user_screen_name}"
-        case arr[2]
-        when 'ex' then
-          notice_text += "遠征[#{arr[4]}]に出発しました"
-        when 'rp' then
-          notice_text += "艦娘[#{arr[4]}]が入渠しました"
-        when 'bd' then
-          notice_text += "建造しました"
-        when 'cr' then
-          notice_text *= "艦娘[#{arr[4]}]の披露が回復しました"
-        end
-        notice_text += ": #{@notice_date}"
-
-        # @reminder_stacks(Array)にHash形式でリマインド内容(:text)とDateTime(:date)を追加し、:date順にsortする
-        @reminder_stacks << Hash[:text => notice_text, :date => date]
-        @reminder_stacks.sort_by! do |elm|
-          elm[:date]
-        end
-        puts 'Reminder Added'
-        text = "@#{@user_screen_name} #{notice_text}"
-        puts text
-        # @rest_client.update(text)
-      when '$' then # Command
-        # # #
-        # Usable Command Types:
-        # * ls
-        #   * -rd
-        #   * -kc
-        puts 'Command'
-        continue
-      end
-
-    rescue
+      command_process($2, $3)
     end
   end
 
-  def relative_date(time)
-    # スケジューリングを行う関数を定義
-    def schedule(later)
-      date = DateTime.now + Rational(later[0], 24) + Rational(later[1], 24*60) + Rational(later[2], 24*60*60)
-      return date
+  def reminder_process(remind_time, notice_text)
+    # remind_time: リマインダーの時間指定
+    # notice_text: リマインダのコメント
+
+    regexp_time = /^(\d{1,2}):(\d{2})$/
+    regexp_hour = /^(\d+)h$/
+    regexp_min = /^(\d+)m$/
+    regexp_hybrid = /^(\d+)h(\d+)m/
+    case remind_time
+    when regexp_time
+      h = $1.to_i
+      m = $2.to_i
+      date = DateTime.now
+
+      #dateに差し引きで指定の時間に変更(時、分のみ変更)
+      date += Rational(h - date.hour, 24)
+      date += Rational(m - date.minute, 24*60)
+      date -= Rational(date.second, 24*60*60) # 差し引きで0秒に指定
+
+      # 当日中であるか明日であるかを判定し、明日の場合は1(day)を加算
+      date += 1 if (h < date.hour) || (h == date.hour && m < date.minute)
+
+      notice_date = "#{h}:#{m}"
+
+    when regexp_hour
+      hour = $1.to_i
+      date = date_calc(hour, 0)
+      notice_date = "#{hour}時間後"
+    when regexp_min
+      minute = $1.to_i
+      date = date_calc(0, minute)
+      notice_date = "#{minute}分後"
+    when regexp_hybrid
+      hour = $1.to_i
+      minute = $2.to_i
+      date = date_calc(hour, minute)
+      notice_date = "#{hour}時間#{minute}分後"
     end
 
-    case time[-1]
-    when 'h' then # Xh
-      later = [time[0..-2], 0, 0]
-      date = schedule(later)
-      @notice_date = "#{later[0]}時間後"
-    when 'm' then #(*)m
-      if time.include?('h') # Xh
-        later = time.split('h')
-        later[1].slice!(-1)
-        @notice_date = "#{later[0]}時間#{later[1]}分後"
-      else #Xhxm
-        later = [0, time[0..-2], 0]
-        @notice_date = "#{later[1]}分後"
-      end
-      date = schedule(later)
-    when 's' then
-      later = [0, 0, time[0..-2]]
-      @notice_date = "#{later[2]}秒後"
-      date = schedule(later)
-    end
+    # @reminder_stacks(Array)にHash形式でtextとdate(DateTime)を追加し、date順にsortする
+    @reminder_stacks << Hash[text: notice_text, date: date]
+    @reminder_stacks.sort_by!{|elm| elm[:date]}
+    @thread.run
+    puts 'Reminder Added'
+    text = "リマインダーを設定しました: #{notice_text} - #{notice_date}"
+    puts text
+    @rest_client.update("D #{@user_screen_name} #{text}")
+  end
+
+  def date_calc(hour = 0, minute = 0)
+    date = DateTime.now + Rational(hour, 24) + Rational(minute, 24*60)
     return date
   end
+
+
+  def command_process(target, cmd)
+    case target
+    when /rd|reminder/
+      cmd_reminder(cmd)
+    when 'update_name'
+      cmd_update_name(cmd)
+    when 'kancolle'
+      puts 'cmd_kancolle'
+    end
+  end
+
+  def cmd_reminder(cmd, opt = nil)
+    case cmd
+    when 'ls'
+      @reminder_stacks.each do |stack|
+        puts "#{stack[:text]} - #{stack[:date]}"
+      end
+      puts 'nothing is reminderd' if @reminder_stacks.empty?
+    end
+  end
+
+  def cmd_update_name(cmd, opt = nil)
+    case cmd
+    when 'start'
+      $update_name_available = true
+    when 'kill'
+      $update_name_available = false
+    end
+  end
+
+
+  def update_name(updated_name, user, opt = nil)
+    ng_regexp = /ニフティ|犯罪|セックス|ホモ|ロリコン|ペド|内定|留年|オナニー|裸|ちんこ|ちんちん|おちん|チンコ|まんこ|マンコ|蓮爾'/
+    before_name = @rest_client.user.name
+    begin
+      if updated_name.match(ng_regexp)
+        @rest_client.update("@#{user.screen_name} NGワードが含まれています")
+      else
+        @rest_client.update_profile(name: updated_name)
+        notice = "@#{user.screen_name}(#{user.name}))により改名されました: #{before_name} => #{updated_name}"
+        puts notice
+        @rest_client.update(notice)
+      end
+    rescue
+      puts 'update_name denied.'
+      notice = "@#{user.screen_name} 失敗しました: #{updated_name}"
+      if notice.length < 140
+        @rest_client.update("@#{user.screen_name} 失敗しました: #{updated_name}")
+      else
+        @rest_client.update("@#{user.screen_name} 失敗しました")
+      end
+    end
+  end
+
 
   def observer
     @thread = Thread.new do
       loop do
-        puts 'loop'
-        if @reminder_stacks.size > 0
-          if (gap = @reminder_stacks[0][:date] - DateTime.now) < Rational(10, 24*60*60)
-            puts 'rest below 10 seconds'
-            loop do
-              # puts 'check'
-              if @reminder_stacks[0][:date] - DateTime.now < Rational(1, 24*60*60)
-                notice_text = "@#{@user_screen_name} #{@reminder_stacks[0][:text]}"
-                puts notice_text
-                @rest_client.update(notice_text)
-                @reminder_stacks.delete_at(0)
-                break
-              end
-            end
-          else # 最初のタスク実行時間までが30秒以上ある場合、それまでsleepし、再度チェックし開始準備状態に入る
-            puts 'thread sleep'
-            sleep_time = (gap*24*60*60).to_i
+        unless @reminder_stacks.empty?
+          # スタックが存在する場合ははじめのスタックについて処理しその後ループに戻る
+          gap = @reminder_stacks[0][:date] - DateTime.now
+          if gap < Rational(1, 24*60*60)
+            notice_text = "#{@reminder_stacks[0][:text]}"
+            puts notice_text
+            @rest_client.update("D #{@user_screen_name} #{notice_text}")
+            @reminder_stacks.delete_at(0)
+            break
+          else
+            # 最初のタスクの実行時間でない場合、差分の時間sleepする
+            # タスクが追加された場合にはsteamからrunされ、再度最初のタスクについて確認処理をする
+            puts 'sleep'
+            sleep_time = (gap * 24*60*60).to_i
             puts "rest: #{sleep_time}"
             sleep(sleep_time)
-            puts 'thread awake'
+            # streamからのrun信号を受けて再開する
+            puts 'awake'
           end
         else
-          puts 'thread stop'
+          # スタックがない場合は、スタック追加によりstreamからrunされるまで停止する
+          puts 'sleep'
           Thread.stop
-          puts 'thread sleep wakeup'
+          # streamからのrun信号を受けて再開する
+          puts 'awake'
         end
       end
     end
@@ -237,18 +205,18 @@ class TwitterReminder < TwitterConnect
 
   def test # Commandline Test
     loop do
-      status = gets.chomp
-      semantic_process(status)
-      # arr = status.split(' ')
-      # add_reminder(arr)
+      print 'text: '
+      text = gets.chomp
+      semantic_process(text)
     end
   end
 end
 
 @tr = TwitterReminder.new('wakotsu_bot')
 
-@reminder_stacks = Array.new
+# @reminder_stacks = Array.new
 @tr.observer
-@tr.stream
-# @tr.dm_stream
-# test
+# @tr.stream
+@tr.test
+
+
